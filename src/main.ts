@@ -4,6 +4,16 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 
+import * as Pring from 'pring';
+import { config } from './config';
+import firebase from 'firebase';
+import 'firebase/firestore';
+
+firebase.initializeApp(config);
+const app = firebase.app();
+
+Pring.initialize(app.firestore(), firebase.firestore.FieldValue.serverTimestamp())
+
 Vue.config.productionTip = false;
 
 new Vue({
